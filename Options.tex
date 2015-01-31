@@ -1,0 +1,23 @@
+\documentclass[fontsize=12pt,		% Font size
+			   toc=listof,			% List of... into table of contents % listofnumbered
+			   paper=A4,			% A4 paper
+			   headinclude=true,	% Include header into type area calculation
+			   footinclude=false,	% Don't include footer into type area calculation
+			   headsepline=true,	% Separating line between header and text
+			   footsepline=false,	% Separating line between footer and text
+			   DIV=calc,			% Auomatically calculate DIV
+			   %BCOR=15mm,			% Binding correction
+			  ]{scrartcl}
+
+\usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{textcomp}				% Avoids conflicts between siunitx and microtype
+\usepackage{siunitx}				% Allow for german decimals, e.g. 1,344 instead of 1.344 + other stuff
+
+\usepackage{graphicx}
+\usepackage{listings}
