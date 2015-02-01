@@ -27,8 +27,29 @@
 
 \section{Umsetzung des Prototypen}
 \subsection{Modell Aufbau}
+\newpage
 \subsection{DMX-Scheinwerfer}
+\newpage
 \subsection{Multimonitor Support}
+Zu Beginn des Projektes wurde versuch eine möglichst große Projektionsfläche zu erhalten. In Ermangelung eines Beamer, der die gewünschte Größe projizieren kann wurde auf drei Beamer zurückgegriffen, die dann nebeneinander ein jeder ein Drittel der Applikation darstellen sollte. Um dies zu realisieren musste aber das komplette Bild das projiziert werden sollte in drei einzelne Bilde geteilt und jeweils um 90° gedreht werden, da die Beamer nicht nebeneinander, sondern über einander aufgebaut werden sollten, damit das komplette Bild hoch und breit genug ist. Dafür wurde in Unity eine extra Kamera in die Szene eingefügt, die die Szene als RenderTexture aufnimmt. Diese RenderTexture wurde dann in drei einzelne Texturen getrennt. Jede Textur um 90° gedreht und dann nebeneinander als Gui-Elemente dargestellt. Soweit war diese Funktionalität auch schon implementiert, bis auf kleine Justierungen beim Zuschneiden der einzelnen Teil Texturen. \\
+Ein anderer Ansatz war drei um 90° gedrehte Kameras in die Szene zu integreren die jeweils ein Drittel des "`Spielfeldes"' filmten. 
+\begin{figure*}[h]
+	\centering
+		\includegraphics[width=0.8\textwidth]{images/RenderTextureBeispielSzene.PNG}
+	\caption{Aufbau der Szene in Unity mit den drein RenderTextrure Ausschnitten am Beispiel eines Dummy Objektes}
+	\label{fig:RenderTextureBeispielSzene}
+\end{figure*}
+Daraus erhielt man drei RenderTextures und dann nebeneinander als Gui rendern konnte. Dafür wurde zunächst mit einem Beispiel Objekt gearbeitet, das ein Material zugewiesen bekam, das es bei der Entwicklung vereinfachte zu erkenne, ob die Kameras richtig ausgerichtet waren und dann auch entsprechend richtig auf die Gui gerendert wurden. 
+\begin{figure*}[h]
+	\centering
+		\includegraphics[width=0.8\textwidth]{images/RenderTexturesAlsGui.PNG}
+	\caption{RenderTextures nebeneinander auf die Gui gerendert}
+	\label{fig:RenderTexturesAlsGui}
+\end{figure*}\\
+Die drei Kameras, mussten jedoch von Hand auf die Szene eingestellt werden, so dass es auch hier wieder zu Ungenauigkeiten hätte kommen können, andererseits, wäre man hier flexibler gewesen die Szene auf die drei Beamer ausrichten könne, in dem man zum Beispiel den Übergänge zwischen den drei Texturen jeweils so hätte Platzieren könne, dass sie einem Spalt auf dem Spielfeld entsprächen.\\ 
+Beide Ansätze waren jedoch nicht zu 100 Prozent exakt,was das Aufteilten der Szene in drei Teil Texturen betraf. Außerdem hatten wir keine drei identischen Beamer zur Verfügung, sodass es unter den einzelnen Beamern Unterschiede bei der Lichtintensität gab.
+Da anstatt der Lösung mit den drei Beamern doch noch ein Gerät gefunden wurde, das alleine die gewünschte Projektionsfläche erbrachte, wurde die Idee mit den drei Beamern, sowie die bisherige Implementierung dafür verworfen und ist im finalen Stand des Projektes nicht mehr enthalten.\\
+\newpage
 \subsection{Tiles-Programmierung}
 \subsection{Modi}
 \subsection{Call to Action}
