@@ -1,6 +1,6 @@
 \mysubsection{Alexander Scheurer}{Spielfeld und Felder}
 
-Das Spielfeld ist so konzipiert dass es für jeden Bedarf dynamisch angepasst werden kann. Der Aufbau des Spielfelds (Maße, Anzahl der Felder, etc.) wird über eine Konfigurationsdatei gesteuert und können auch zur Laufzeit geändert werden.
+Das Spielfeld ist so konzipiert dass es für jeden Bedarf dynamisch angepasst werden kann. Der Aufbau des Spielfelds (Maße, Anzahl der Felder, etc.) wird über eine Konfigurationsdatei gesteuert und kann auch zur Laufzeit geändert werden.
 
 Als Datenspeicher zur Laufzeit wurden eigene Datentypen definiert die 2-Dimensional verschachtelt in Listen gehalten werden. Über Methoden kommunizieren hiermit alle anderen Klassen die Einfluss auf das Verhalten der Felder, zum Beispiel Farbwechsel, haben.
 
@@ -12,7 +12,7 @@ Das Spielfeld verwaltet auch als zentrales Element die Spiellogik und aktualisie
 \item BPM Update
 \end{itemize}
 
-In Update und LateUpdate wird die Spiellogik, das Zeichen des Bildes und alle nicht zeitkritischen Operationen durchgeführt.
+In Update und LateUpdate wird die Spiellogik, das Zeichnen des Bildes und alle nicht zeitkritischen Operationen durchgeführt.
 FixedUpdate verwaltet aufgrund seines zeitlich definierten Ablaufes die Taktung des Spiels und bildet in Abhängigkeit des aktuellen Liedes das "BPM Update", das Bespielsweise den Takt für die DMX-Lichtersteuerung Vorgibt.
 Ein exaktes Timing ist hier unabdingbar da auch geringe abweichungen 
 
