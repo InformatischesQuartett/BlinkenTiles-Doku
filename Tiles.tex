@@ -1,0 +1,29 @@
+\mysubsection{Alexander Scheurer}{Spielfeld und Felder}
+
+Das Spielfeld ist so konzipiert dass es für jeden Bedarf dynamisch angepasst werden kann. Der Aufbau des Spielfelds (Maße, Anzahl der Felder, etc.) wird über eine Konfigurationsdatei gesteuert und kann auch zur Laufzeit geändert werden.
+
+Als Datenspeicher zur Laufzeit wurden eigene Datentypen definiert die 2-Dimensional verschachtelt in Listen gehalten werden. Über Methoden kommunizieren hiermit alle anderen Klassen die Einfluss auf das Verhalten der Felder, zum Beispiel Farbwechsel, haben.
+
+Das Spielfeld verwaltet auch als zentrales Element die Spiellogik und aktualisiert bei Bedarf die Konfiguration und auch alle anderen Elemente. Er gibt auch die Taktung des Spiels vor was in vier verschiedene Gameloops aufgeteilt werden kann:
+\begin{itemize}
+\item Update (Unity eigen)
+\item LateUpdate (Unity eigen)
+\item FixedUpdate (Unity eigen)
+\item BPM Update
+\end{itemize}
+
+In Update und LateUpdate wird die Spiellogik, das Zeichnen des Bildes und alle nicht zeitkritischen Operationen durchgeführt.
+FixedUpdate verwaltet aufgrund seines zeitlich definierten Ablaufes die Taktung des Spiels und bildet in Abhängigkeit des aktuellen Liedes das "BPM Update", das Bespielsweise den Takt für die DMX-Lichtersteuerung Vorgibt.
+Ein exaktes Timing ist hier unabdingbar da auch geringe abweichungen 
+
+\todo{Status beschreiben}
+Die Zuweisung des aktuellen Status der Felder passiert der Übersichtlichkeit wegen sequenziell.
+\begin{enumerate}
+\item \emph{Clear pass} - Reset
+\item \emph{Preview pass} - Preview Status bei Challenge Mode
+\item \emph{Timer pass} - Setzen des Zeitimpulses
+\item \emph{People pass} - Setzen der aktiven Felder anhand der Personenpositionen
+\item \emph{Shake'n'Play pass} - Abspielen der Audio-Clips anhand des Zeitimpules und der und der Personenposition
+\end{enumerate}
+
+Die Felder verwalten sich größtenteils selbst. Von außen wird der derzeitige Status zugewiesen und es wird benachrichtigt bei Songwechsel. Laden der Shader, laden des entsprechenden Audio-Clips und rendern übernehmen sie selbst.
