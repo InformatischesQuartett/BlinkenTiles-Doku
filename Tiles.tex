@@ -14,7 +14,9 @@ Das Spielfeld verwaltet auch als zentrales Element die Spiellogik und aktualisie
 
 In Update und LateUpdate wird die Spiellogik, das Zeichen des Bildes und alle nicht zeitkritischen Operationen durchgeführt.
 FixedUpdate verwaltet aufgrund seines zeitlich definierten Ablaufes die Taktung des Spiels und bildet in Abhängigkeit des aktuellen Liedes das "BPM Update", das Bespielsweise den Takt für die DMX-Lichtersteuerung Vorgibt.
+Ein exaktes Timing ist hier unabdingbar da auch geringe abweichungen 
 
+\todo{Status beschreiben}
 Die Zuweisung des aktuellen Status der Felder passiert der Übersichtlichkeit wegen sequenziell.
 \begin{enumerate}
 \item \emph{Clear pass} - Reset
