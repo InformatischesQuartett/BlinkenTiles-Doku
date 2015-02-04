@@ -1,29 +1,19 @@
 \mysubsection{Alexander Scheurer}{Spielfeld und Felder}
 
-Das Spielfeld ist so konzipiert dass es für jeden Bedarf dynamisch angepasst werden kann. Der Aufbau des Spielfelds (Maße, Anzahl der Felder, etc.) wird über eine Konfigurationsdatei gesteuert und kann auch zur Laufzeit geändert werden.
+Das Spielfeld und die Felder werden von zwei Klassen bestimmt, die TileController und TileBehaviour Klasse. 
+Die TileController Klasse ist die Zentrale Klasse, sie beinhaltet die Spiellogik, baut das Spielfeld auf, verarbeitet Eingaben (von Personenerkennung, Maus, Tastatur, Konfiguration und Idle-Mode).
 
-Als Datenspeicher zur Laufzeit wurden eigene Datentypen definiert die 2-Dimensional verschachtelt in Listen gehalten werden. Über Methoden kommunizieren hiermit alle anderen Klassen die Einfluss auf das Verhalten der Felder, zum Beispiel Farbwechsel, haben.
-
-Das Spielfeld verwaltet auch als zentrales Element die Spiellogik und aktualisiert bei Bedarf die Konfiguration und auch alle anderen Elemente. Er gibt auch die Taktung des Spiels vor was in vier verschiedene Gameloops aufgeteilt werden kann:
-\begin{itemize}
-\item Update (Unity eigen)
-\item LateUpdate (Unity eigen)
-\item FixedUpdate (Unity eigen)
-\item BPM Update
-\end{itemize}
-
-In Update und LateUpdate wird die Spiellogik, das Zeichnen des Bildes und alle nicht zeitkritischen Operationen durchgeführt.
-FixedUpdate verwaltet aufgrund seines zeitlich definierten Ablaufes die Taktung des Spiels und bildet in Abhängigkeit des aktuellen Liedes das "BPM Update", das Bespielsweise den Takt für die DMX-Lichtersteuerung Vorgibt.
-Ein exaktes Timing ist hier unabdingbar da auch geringe abweichungen 
-
-\todo{Status beschreiben}
-Die Zuweisung des aktuellen Status der Felder passiert der Übersichtlichkeit wegen sequenziell.
+Die Spiellogik umfasst überwiegend das Timing der Abläufe und in Abhängigkeit davon das zuweisen von Zustände an die einzelnen Felder. Die Zustände die Zugewiesen werden beschreiben zum Beispiel ob auf diesem eine Person steht, ob derzeit sich der Zeitindex in der Reihe dieses Feldes befindet oder ob sogar beides vorher genante zutrifft, was zur Folge hätte dass auch der entsprechende Ton zu dem Feld abgespielt werden muss. Die TileController Klasse weist den Feldern den entsprechenden Zustand sequenziell zu:
 \begin{enumerate}
-\item \emph{Clear pass} - Reset
-\item \emph{Preview pass} - Preview Status bei Challenge Mode
-\item \emph{Timer pass} - Setzen des Zeitimpulses
-\item \emph{People pass} - Setzen der aktiven Felder anhand der Personenpositionen
-\item \emph{Shake'n'Play pass} - Abspielen der Audio-Clips anhand des Zeitimpules und der und der Personenposition
+\item Alle Felder werden zurückgesetzt (Clear pass)
+\item Der Zustand für Zeitimpuls wird bei den entsprechenden Feldern gesetzt (Timer pass)
+\item Der Zustand für Feldern auf denen Personen erkannt wurden, werden gesetzt (People pass)
+\item Der vereinigte Zustand von 2. und 3. wird gesetzt (Shake'n'Play pass)
 \end{enumerate}
+Verarbeitet wird dieser Zustand von jedem Feld selbst mit Hilfe der TileBehaviour Klasse. In dieser passiert die Umsetzung von Zustand zu Aktion, also welcher Shader (Farbe) für das Feld gesetzt wird oder soll es wackeln weil es den entsprechenden Zustand vom Shake'n'Play pass zugewiesen bekommen hat.
 
-Die Felder verwalten sich größtenteils selbst. Von außen wird der derzeitige Status zugewiesen und es wird benachrichtigt bei Songwechsel. Laden der Shader, laden des entsprechenden Audio-Clips und rendern übernehmen sie selbst.
+Zum Start des Spiels hat der TileController die Aufgabe das Spielfeld aufzubauen, dies macht er anhand von JSON-Konfigurationsdateien einmal für die Grundkonfiguration als auch Konfigurationen für jeden Song. Die Grundkonfiguration definiert unter anderem welche Ausmaße das Spielfeld hat, oder auch welche Farbe einem bestimmten Feldzustand zugewiesen ist. Die Song-Konfiguration beinhaltet zum Beispiel die Angabe über die Beats pro Minute und die Pfade zu den Audiodateien.
+
+Benutzereingaben nimmt der TileController entgegen und veranlasst die entsprechende Aktion. Zum Beispiel einen Songwechsel oder das verarbeiten eines Feldzustandes von der Personenerkennung oder dem Idle-Node.
+
+
