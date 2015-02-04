@@ -107,3 +107,9 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+% TexnicCenter Stuff
+*.synctex
+*.tcp
+*.tps
+
