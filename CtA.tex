@@ -1,10 +1,32 @@
 \mysubsection{Sarah Häfele}{Call to Action}
 
-Neben scheinwerfern und bunter grafik noch weiteres
+Die Vermutung, dass bei einer Installation mit Musik und der Notwendigkeit, sich zu bewegen, die Hemmschwelle diese zu nutzen höher liegt, liegt nahe. Neben Lichteffekten durch die Scheinwerfer und dem offiziellen Spielfeld dienen deswegen weitere Komponenten zur \textit{Call to Action}, also zur Motivation der Besucher. Diese sollen nicht nur zum Mitmachen bewegen, sondern auch gleichzeitig anleitend wirken.
 
-\subsubsection{Present-Screen}
+\subsubsection{Der Presentation-Screen}
 
-XML-Synchro (von Linda), parsen
+Der Presentation-Screen ist als eine Art Präsentationsfläche gedacht, die den Nutzern weitere Informationen zur Installation liefern soll. In der Spieleengine Unity mit C\# entwickelt, kann sie als eigenständige Anwendung auf einem großen Bildschirm neben dem Spielfeld angezeigt werden. Die Anwendung besteht bislang aus vier Modi, angefangen mit dem Startmenü, welches das Logo der Installation und weitere Menüpunkte anzeigt. Der \textit{How-To}-Modus zeigt ein Video welches kurz erklärt, wie das Spielprinzip funktioniert.  erstellt von Fabian Gärtner in Adobe Premiere. Im \textit{Behind-the-Scenes}-Modus wird ein aktuelles Bild der Kinect sowie das Beamerbild gezeigt um zu erklären, wie die Technik dahinter funktioniert. Die Anwendung kommuniziert dabei über das Internet mit der BlinkenTiles-Anwendung. Zuletzt zeigt der \textit{Time-Lapse}-Modus ein Video des Aufbaus der Installation, aufgenommen mit einer GoPro Kamera und geschnitten von Fabian Gärtner.\\
+Die Modi können in einem Loop abgespielt werden, wobei nach einiger Zeit oder wenn das Video zu Ende ist das Programm in den nächsten Modus springt. Wenn die Hauptanwendung von BlinkenTiles jedoch in den Challenge-Modus wechselt, verändert sich auch der Presentation-Screen: er springt zum \textit{How-To}-Video und zeigt zudem Information zum abgespielten Lied an. Dies beinhaltet den Musiktitel und einen Countdown (siehe Abbildung \autoref{fig:PresScreen}).
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.88\textwidth]{images/PresScreen.png}
+	\caption{Presentation-Screen im Challenge Mode}
+	\label{fig:PresScreen}
+\end{figure}
+
+Die BlinkenTiles-Anwendung kommuniziert mit einem XML-File über das Internet mit dem Presentation-Programm. Die Hauptanwendung erstellt das File und legt es in einem Netzwerkordner ab. Dieser Teil wurde von Linda Schey implementiert. Die Presentation-Anwendung greift auf das File zu, parst die Textinformationen und speichert sie in entsprechenden Variablen. Abbildung \autoref{fig:PresScreen} zeigt ein minimales Beispiel, welche Informationen so an den Presentation-Screen übermittelt werden können.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.88\textwidth]{images/PresScreen.png}
+	\caption{XML-File mit aktuellen Informationen für den Presentation-Screen }
+	\label{fig:PresScreen}
+\end{figure}
+
+Die Variablen werden dann an die einzelnen Codeelemente weitergegeben. Der Countdown wird durch die übermittelte Länge des Liedes ermittelt und dann selbstständig . 
+
+menü immer da, ein und ausblenden
+Sandra
 
 \subsubsection{Idle Animation}
 
