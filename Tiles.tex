@@ -1,20 +1,20 @@
 \mysubsection{Alexander Scheurer}{Spielfeld und Felder}
 \label{sec:tiles}
 
-Das Spielfeld und die Felder werden von zwei Klassen bestimmt, die TileController und TileBehaviour Klasse. 
-Die TileController Klasse ist die Zentrale Klasse, sie beinhaltet die Spiellogik, baut das Spielfeld auf, verarbeitet Eingaben (von Personenerkennung, Maus, Tastatur, Konfiguration und Idle-Mode).
+Das Spielfeld und die Felder werden von zwei Klassen bestimmt, die \emph{TileController} und \emph{TileBehaviour} Klasse. 
+Die \emph{TileController} Klasse ist die Zentrale Klasse, sie beinhaltet die Spiellogik, baut das Spielfeld auf, verarbeitet Eingaben (von Personenerkennung, Maus, Tastatur, Konfiguration und Idle-Mode).
 
-Die Spiellogik umfasst überwiegend das Timing der Abläufe und in Abhängigkeit davon das zuweisen von Zustände an die einzelnen Felder. Die Zustände die Zugewiesen werden beschreiben zum Beispiel ob auf diesem eine Person steht, ob derzeit sich der Zeitindex in der Reihe dieses Feldes befindet oder ob sogar beides vorher genante zutrifft, was zur Folge hätte dass auch der entsprechende Ton zu dem Feld abgespielt werden muss. Die TileController Klasse weist den Feldern den entsprechenden Zustand sequenziell zu:
+Die Spiellogik umfasst überwiegend das Timing der Abläufe und in Abhängigkeit davon das zuweisen von Zustände an die einzelnen Felder. Die Zustände die Zugewiesen werden beschreiben zum Beispiel ob auf diesem eine Person steht, ob derzeit sich der Zeitindex in der Reihe dieses Feldes befindet oder ob sogar beides vorher genante zutrifft, was zur Folge hätte dass auch der entsprechende Ton zu dem Feld abgespielt werden muss. Die \emph{TileController} Klasse weist den Feldern den entsprechenden Zustand sequenziell zu:
 \begin{enumerate}
 \item Alle Felder werden zurückgesetzt (Clear pass)
 \item Der Zustand für Zeitimpuls wird bei den entsprechenden Feldern gesetzt (Timer pass)
 \item Der Zustand für Feldern auf denen Personen erkannt wurden, werden gesetzt (People pass)
 \item Der vereinigte Zustand von 2. und 3. wird gesetzt (Shake'n'Play pass)
 \end{enumerate}
-Verarbeitet wird dieser Zustand von jedem Feld selbst mit Hilfe der TileBehaviour Klasse. In dieser passiert die Umsetzung von Zustand zu Aktion, also welcher Shader (Farbe) für das Feld gesetzt wird oder soll es wackeln weil es den entsprechenden Zustand vom Shake'n'Play pass zugewiesen bekommen hat.
+Verarbeitet wird dieser Zustand von jedem Feld selbst mit Hilfe der \emph{TileBehaviour} Klasse. In dieser passiert die Umsetzung von Zustand zu Aktion, also welcher Shader (Farbe) für das Feld gesetzt wird oder soll es wackeln weil es den entsprechenden Zustand vom Shake'n'Play pass zugewiesen bekommen hat.
 
-Zum Start des Spiels hat der TileController die Aufgabe das Spielfeld aufzubauen, dies macht er anhand von JSON-Konfigurationsdateien einmal für die Grundkonfiguration als auch Konfigurationen für jeden Song. Die Grundkonfiguration definiert unter anderem welche Ausmaße das Spielfeld hat, oder auch welche Farbe einem bestimmten Feldzustand zugewiesen ist. Die Song-Konfiguration beinhaltet zum Beispiel die Angabe über die Beats pro Minute und die Pfade zu den Audiodateien.
+Zum Start des Spiels hat der \emph{TileController} die Aufgabe das Spielfeld aufzubauen, dies macht er anhand von JSON-Konfigurationsdateien einmal für die Grundkonfiguration als auch Konfigurationen für jeden Song. Die Grundkonfiguration definiert unter anderem welche Ausmaße das Spielfeld hat, oder auch welche Farbe einem bestimmten Feldzustand zugewiesen ist. Die Song-Konfiguration beinhaltet zum Beispiel die Angabe über die Beats pro Minute und die Pfade zu den Audiodateien.
 
-Benutzereingaben nimmt der TileController entgegen und veranlasst die entsprechende Aktion. Zum Beispiel einen Songwechsel oder das verarbeiten eines Feldzustandes von der Personenerkennung oder dem Idle-Node.
+Benutzereingaben nimmt der \emph{TileController} entgegen und veranlasst die entsprechende Aktion. Zum Beispiel einen Songwechsel oder das verarbeiten eines Feldzustandes von der Personenerkennung oder dem Idle-Node.
 
 
