@@ -14,20 +14,24 @@ Die Modi können in einem Loop abgespielt werden, wobei nach einiger Zeit oder w
 	\label{fig:PresScreen}
 \end{figure}
 
-Die BlinkenTiles-Anwendung kommuniziert mit einem XML-File über das Internet mit dem Presentation-Programm. Die Hauptanwendung erstellt das File und legt es in einem Netzwerkordner ab. Dieser Teil wurde von Linda Schey implementiert. Die Presentation-Anwendung greift auf das File zu, parst die Textinformationen und speichert sie in entsprechenden Variablen. Abbildung \autoref{fig:PresScreen} zeigt ein minimales Beispiel, welche Informationen so an den Presentation-Screen übermittelt werden können.
+Die BlinkenTiles-Anwendung kommuniziert mit einem XML-File über das Internet mit dem Presentation-Programm. Die Hauptanwendung erstellt das File und legt es in einem Netzwerkordner ab. Dieser Teil wurde von Linda Schey implementiert. Die Presentation-Anwendung greift auf das File zu, parst die Textinformationen und speichert sie in entsprechenden Variablen. Abbildung \autoref{fig:XML} zeigt ein minimales Beispiel, welche Informationen so an den Presentation-Screen übermittelt werden können.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.0\textwidth]{images/XML.png}
 	\caption{XML-File mit aktuellen Informationen für den Presentation-Screen }
-	\label{fig:PresScreen}
+	\label{fig:XML}
 \end{figure}
 
 Die Variablen werden dann an die einzelnen Codeelemente weitergegeben und für die Anzeigen verwendet. Der Countdown wird durch die übermittelte Länge des Liedes ermittelt und dann selbstständig dekrementiert. Endet der Challenge Mode, wird der Loop normal fortgesetzt.
 
-\subsubsection{Spielfeld}
-Das Spielfeld, welches durch den Beamer auf den Boden projiziert wird, bietet ebenfalls eine gute Möglichkeit
-idle animation
-Code
+\subsubsection{Spielfeld-Angaben}
+Das Spielfeld, welches durch den Beamer auf den Boden projiziert wird, bietet ebenfalls eine gute Möglichkeit, direkt mit den Akteuren zu kommunizieren. Wenn der Challenge Mode startet, wird das Feld deswegen komplett weiß, eine Textinformation zeigt den Modus an und ein Countdown zählt die Beats zum Start herunter.\\
+Eine Boolean-Variable checkt außerdem noch, ob sich gerade Personen auf dem Feld befinden. Wenn dies nicht der Fall ist, wird nach einer gewissen, konfigurierbaren Zeit der so genannte \textit{Idle Mode} gestartet. Um die Besucher zu motivieren, die Spielfläche zu betreten und um anzuzeigen, wie die Installation funktioniert, werden dabei Fußstapfen auf zufälligen Feldern verteilt. Nach einer gewissen Zeit ändern sie ihre Position. Die Fußstapfen sind Texturänderungen des Materials der Felder per Code. Ein mit einem Fußstapfen-Material belegtes Feld gilt als aktiv und wird so behandelt, als würde eine Person darauf stehen. Eine \emph{Update}-Methode überprüft regelmäßig, ob sich jemand auf das Spielfeld begibt. Ist dies der Fall, endet der Idle Mode sofort und die Fußstapfen verschwinden. Als kleine Auflockerung wurden nicht nur menschliche Fußstapfen verwendet, sondern auch die von Dinosauriern und Hunden (siehe Abbildung \autoref{fig:IdleAni}).
 
-als presentation
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.9\textwidth]{images/IdleAni.png}
+	\caption{Idle Modus mit Fußstapfen}
+	\label{fig:IdleAni}
+\end{figure}
