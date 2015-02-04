@@ -1,20 +1,26 @@
 \mysubsection{Meike Zöckler}{Funktion}
 
-BlinkenTiles orientiert sich zunächst an der Funktion einer Soundmatrix. Diese besteht eben aus einem Grid an Feldern, jedem ist ein Ton hinterlegt. Ähnlich einem Stepsequenzer, dessen Funktionsweise später noch beschrieben wird, tastet ein Impuls die Felder ab. Sind die Felder aktiviert, erklingt bei der Abtastung an entsprechender Stelle der zugewiesen Ton.\\
-Wie eine solche Matrix als Applet aussehen kann, ist unter folgender Adresse auszuprobieren: \url{http://www.buzzedgames.com/sound-matrix-game.html}.\\
+BlinkenTiles orientiert sich zunächst an der Funktion einer Soundmatrix. Diese besteht eben aus einem Grid an Feldern, jedem ist ein Ton hinterlegt. Ähnlich einem Stepsequenzer, dessen Funktionsweise später noch beschrieben wird, tastet ein Impuls die Felder ab. Sind die Felder aktiviert, erklingt bei der Abtastung an entsprechender Stelle der zugewiesen Ton.
+
+Wie eine solche Matrix als Applet aussehen kann, ist unter folgender Adresse auszuprobieren: \url{http://www.buzzedgames.com/sound-matrix-game.html}.
+
 Diese Matrix ist deutlich größer angelegt als unser Prototyp. Eine Aktivierung erfolgt per Klick auf die Felder. Diese werden danach weiß angezeigt. Der Impuls läuft von links nach rechts. Zwar sieht der Nutzer den Impuls nicht, aber denn noch erhält er zusätzlich zum abgespielten Ton ein optisches Feedback der abgespielten Felder. Die Felder bleiben bis zum nächsten Klick darauf aktiviert.\\
-Im Falle von BlinkenTiles werden die Felder auf den Boden projiziert. Die Aktivierung eines Feldes erfolgt durch Positionierung einer Person auf einem Feld. Es bleibt solange aktiviert, wie der Mensch auf diesem Feld stehen bleibt.\\
+Im Falle von BlinkenTiles werden die Felder auf den Boden projiziert. Die Aktivierung eines Feldes erfolgt durch Positionierung einer Person auf einem Feld. Es bleibt solange aktiviert, wie der Mensch auf diesem Feld stehen bleibt.
 
 Wie auch bei den vorherigen Ideen wurden bei BlinkenTiles zwei Modi angedacht:
 
 \subsubsection{Modus 1: Freestyle}
+
 Zunächst wird ein einfacher Backingtrack abgespielt, in erster Linie bestehend aus Rhythmus und möglicherweise Bass oder einfache Akkorde. Die eigentliche Melodie wird von Menschen geschaffen, die sich auf der Projektion bewegen. Dabei sollte man genügend Raum zum Ausprobieren haben: In der ursprünglichen Idee sollte es möglich sein, mit verschiedenen Mustern, die durch das Ausstrecken von Armen und Beinen entstehen (Linien, Quadrate, Rechtecke oder gleich die ganze Tetrispalette), neue Töne zu erzeugen. Aufgrund der Entscheidung für eine Pentatonik, was im Kapitel zu Audio weiter erläutert wird, haben wir diese Idee verworfen. Die Felder werden so abgespielt, wie sie hinterlegt sind. Entlang der kurzen Seite werden Akkorde erzeugt, entlang der langen sind sie als Notenwerte durch den durchlaufenden Impuls zeitlich versetzt.
 
 \subsubsection{Modus 2: Challenge}
+
 Der Challenge Mode ist an das Konsolenspiel \textit{GuitarHero} angelehnt. Hier werden den Nutzern die Felder vorgegeben, mit denen die Melodie für die entsprechenden Songs nachgetanzt oder nachgehüpft werden sollen. Je nach Song, wie schnell oder wie komplex die Melodie ist, desto mehr Menschen werden benötigt, um die Melodie fehlerfrei zu hüpfen. Man spielt nicht gegeneinander sondern miteinander und muss teilweise zusammenarbeiten, um die richtigen Felder zu treffen. Durch den Verzicht auf eine Punktevergabe stehen der Spaß und das Miteinander im Vordergrund, nicht der kompetitive Aspekt wie bei \textit{Guitar Hero}.
 
 \subsubsection{Modus 3: Idle}
-Der Idle Mode dient dazu zu zeigen, wie das Spielprinzip im Freestyle funktioniert. Es werden zufällig mehrere Felder pro Impulsdurchlauf aktiviert und mit Fußspuren angezeigt, die klar machen sollen, dass man sich auf die Projektion, auf die Felder stellen muss, damit etwas passiert. Werden diese aktivierten Felder abgetastet, erzeugen sie ebenfalls Töne wie im Freestyle. Somit soll der potentielle Zuschauer intuitiv in Bild und Ton wahrnehmen, wie die Installation funktioniert. Damit kommt sie ohne lange Erklärungen oder zusätzliche Tutorials, Intros oder zusätzliche Screens aus.\\
+
+Der Idle Mode dient dazu zu zeigen, wie das Spielprinzip im Freestyle funktioniert. Es werden zufällig mehrere Felder pro Impulsdurchlauf aktiviert und mit Fußspuren angezeigt, die klar machen sollen, dass man sich auf die Projektion, auf die Felder stellen muss, damit etwas passiert. Werden diese aktivierten Felder abgetastet, erzeugen sie ebenfalls Töne wie im Freestyle. Somit soll der potentielle Zuschauer intuitiv in Bild und Ton wahrnehmen, wie die Installation funktioniert. Damit kommt sie ohne lange Erklärungen oder zusätzliche Tutorials, Intros oder zusätzliche Screens aus.
+
 Nach 30 Sekunden Inaktivität wird dieser Modus automatisch geschaltet.
 
 
